@@ -367,6 +367,134 @@
     border-top: 1px solid rgba(245,239,226,0.08);
   }
 
+  /* ===================== RESEARCH FRAMEWORK — paper ===================== */
+  .framework {
+    background: var(--paper);
+    border-top: 1px solid rgba(26,20,16,0.10);
+    border-bottom: 1px solid rgba(26,20,16,0.10);
+  }
+  .framework .h2 em { color: var(--orange); }
+
+  .case {
+    margin-top: 56px;
+    border-left: 4px solid var(--orange);
+    padding: 14px 0 14px 28px;
+    max-width: 820px;
+  }
+  .case-eyebrow {
+    display: block;
+    font-size: 12px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-dim); margin-bottom: 16px;
+  }
+  .case-question {
+    font-family: var(--serif-font); font-style: italic; font-weight: 500;
+    font-size: clamp(28px, 4.6vw, 60px);
+    line-height: 1.05; letter-spacing: -0.01em;
+    margin: 0; color: var(--ink);
+  }
+  .case-question em { color: var(--orange); font-style: italic; }
+
+  /* The matrix */
+  .matrix-board {
+    display: grid;
+    grid-template-columns: 28px 28px 1fr 1fr;
+    grid-template-rows: 24px 28px 1fr 1fr;
+    grid-template-areas:
+      ".     .     ax-x  ax-x"
+      ".     .     tx-l  tx-r"
+      "ax-y  ty-t  c-tl  c-tr"
+      "ax-y  ty-b  c-bl  c-br";
+    gap: 10px 14px;
+    max-width: 760px;
+    margin: 96px auto 0;
+  }
+  .matrix-board > .ax-x-name { grid-area: ax-x;
+    text-align: center; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-dim); font-weight: 800; align-self: end;
+  }
+  .matrix-board > .ax-x-tick { font-family: var(--serif-font); font-style: italic; color: var(--ink); font-size: 16px; text-align: center; align-self: center; }
+  .matrix-board > .ax-x-tick.l { grid-area: tx-l; }
+  .matrix-board > .ax-x-tick.r { grid-area: tx-r; }
+  .matrix-board > .ax-y-name { grid-area: ax-y;
+    writing-mode: vertical-rl; transform: rotate(180deg);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-dim); font-weight: 800;
+  }
+  .matrix-board > .ax-y-tick {
+    writing-mode: vertical-rl; transform: rotate(180deg);
+    font-family: var(--serif-font); font-style: italic; color: var(--ink); font-size: 14px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .matrix-board > .ax-y-tick.t { grid-area: ty-t; }
+  .matrix-board > .ax-y-tick.b { grid-area: ty-b; }
+  .matrix-board > .cell {
+    background: var(--paper-2);
+    border: 1px dashed rgba(26,20,16,0.32);
+    border-radius: 10px;
+    padding: 22px 18px;
+    display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+    aspect-ratio: 1.4 / 1;
+    transition: background .3s, border-color .3s, transform .3s;
+  }
+  .matrix-board > .cell-tl { grid-area: c-tl; }
+  .matrix-board > .cell-tr { grid-area: c-tr; }
+  .matrix-board > .cell-bl { grid-area: c-bl; }
+  .matrix-board > .cell-br { grid-area: c-br; }
+  .matrix-board > .cell:hover { background: #fff; border-color: var(--orange); transform: translateY(-3px); }
+  .matrix-board > .cell h4 {
+    margin: 0;
+    font-size: clamp(20px, 3.2vw, 36px);
+    font-weight: 800; letter-spacing: 0.06em; color: var(--ink);
+  }
+  .matrix-board > .cell p {
+    margin: 10px 0 0;
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ink-dim); font-weight: 700;
+  }
+  @media (max-width: 640px){
+    .matrix-board {
+      grid-template-columns: 22px 22px 1fr 1fr;
+      grid-template-rows: 20px 24px 1fr 1fr;
+      gap: 6px 10px;
+    }
+    .matrix-board > .ax-x-name,
+    .matrix-board > .ax-y-name { font-size: 9px; letter-spacing: 0.18em; }
+    .matrix-board > .ax-x-tick { font-size: 13px; }
+    .matrix-board > .ax-y-tick { font-size: 12px; }
+    .matrix-board > .cell { padding: 16px 12px; aspect-ratio: 1.2 / 1; }
+  }
+
+  /* Participant flow list */
+  .flow {
+    margin-top: 96px;
+    max-width: 920px;
+  }
+  .flow .label { display: inline-flex; margin-bottom: 24px; }
+  .flow-list {
+    list-style: none; padding: 0; margin: 0;
+    border-top: 1px solid rgba(26,20,16,0.18);
+  }
+  .flow-list li {
+    display: grid; grid-template-columns: 80px 1fr;
+    gap: 24px; align-items: baseline;
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(26,20,16,0.14);
+    font-size: clamp(20px, 2.4vw, 30px); font-weight: 800; letter-spacing: -0.015em;
+    color: var(--ink); line-height: 1.2;
+    transition: padding-left .3s, color .3s;
+    cursor: default;
+  }
+  .flow-list li:hover { padding-left: 12px; color: var(--orange); }
+  .flow-list .step-n {
+    font-family: var(--serif-font); font-style: italic; font-weight: 500;
+    color: var(--moss);
+    font-size: clamp(18px, 1.8vw, 22px);
+  }
+  @media (max-width: 480px){
+    .flow-list li { grid-template-columns: 56px 1fr; gap: 14px; padding: 18px 0; }
+  }
+
   /* ===================== REVEAL ANIMATIONS ===================== */
   .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.8,.2,1); }
   .reveal.in { opacity: 1; transform: translateY(0); }
@@ -489,7 +617,7 @@
       <div class="how-step reveal">
         <div class="step-num">STEP 01</div>
         <h4>Enter the field</h4>
-        <p>One person steps into the installation. The system invites him into a short, guided dialogue.</p>
+        <p>One person, or a small group, steps into the installation. The system invites them into a short, guided dialogue.</p>
       </div>
       <div class="how-step reveal">
         <div class="step-num">STEP 02</div>
@@ -510,7 +638,7 @@
   <div class="wrap">
     <div class="reveal">
       <span class="label">Previous iteration</span>
-      <h2 class="h2">London Experience Week — <em>WXO 2026.</em></h2>
+      <h2 class="h2">London Experience Week — <em>WXO 2025.</em></h2>
       <p class="body-lg" style="margin-top: 28px; max-width: 70ch;">
         The first public iteration ran as a continuous installation embedded inside a shared social environment. Participants entered alone or in small groups across the event. Their responses accumulated into a single mural and a Weather Report — a poetic-analytical reading of the field's emotional and symbolic climate.
       </p>
@@ -520,6 +648,56 @@
       <figure><img src="assets/install-stage.jpg" alt="StoryField Mirror installed at London Experience Week — main screen with the evolving mural" loading="lazy" /></figure>
       <figure><img src="assets/install-venue.jpg" alt="Visitors at the StoryField Mirror installation in London" loading="lazy" /></figure>
     </div>
+  </div>
+</section>
+
+<!-- ============== RESEARCH FRAMEWORK ============== -->
+<section class="framework pad">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="label">Beneath the watercolor</span>
+      <h2 class="h2">It is also a <em>research instrument.</em></h2>
+      <p class="body-lg" style="margin-top: 28px;">
+        The mural is the visible surface of a structured inquiry. Each iteration begins with a single question — and a clear architecture that turns individual answers into a collective field. The painting is not decoration. It is the readout.
+      </p>
+    </div>
+
+    <div class="case reveal">
+      <span class="case-eyebrow">Case study · WXO London · April 2026</span>
+      <p class="case-question">Where do you place your trust<br>in each other <em>with power?</em></p>
+    </div>
+
+    <div class="matrix-board reveal" role="img" aria-label="Trust × Power 2×2 matrix with archetypes Control, Bind, Extract, Burn">
+      <div class="ax-x-name">concentration of power</div>
+      <div class="ax-x-tick l">few</div>
+      <div class="ax-x-tick r">many</div>
+      <div class="ax-y-name">quality of responsibility</div>
+      <div class="ax-y-tick t">responsible</div>
+      <div class="ax-y-tick b">irresponsible</div>
+      <div class="cell cell-tl"><h4>CONTROL</h4><p>few · responsible</p></div>
+      <div class="cell cell-tr"><h4>BIND</h4><p>many · responsible</p></div>
+      <div class="cell cell-bl"><h4>EXTRACT</h4><p>few · irresponsible</p></div>
+      <div class="cell cell-br"><h4>BURN</h4><p>many · irresponsible</p></div>
+    </div>
+
+    <p class="body reveal" style="margin: 28px auto 0; text-align: center; max-width: 60ch; font-style: italic; font-family: var(--serif-font); font-weight: 500; color: var(--ink-dim);">
+      Each participant locates themselves on the field. Each position becomes an archetype, a personal avatar, and a trace inside the collective mural.
+    </p>
+
+    <div class="flow reveal">
+      <span class="label">Participant path</span>
+      <ol class="flow-list">
+        <li><span class="step-n">01</span> <span>Scan to enter.</span></li>
+        <li><span class="step-n">02</span> <span>Share your hopes and fears.</span></li>
+        <li><span class="step-n">03</span> <span>Find your place inside the mural grid.</span></li>
+        <li><span class="step-n">04</span> <span>Discover your personal avatar.</span></li>
+        <li><span class="step-n">05</span> <span>See what emerges from the collective StoryField.</span></li>
+      </ol>
+    </div>
+
+    <p class="body-lg reveal" style="margin-top: 88px; max-width: 70ch;">
+      The mural that emerges is not abstract. It is a precise readout of where a temporary community placed itself — and where it left tensions unresolved. The Venice version will work the same way: a single question, a structured field, a living result.
+    </p>
   </div>
 </section>
 
@@ -577,4 +755,3 @@
 
 </body>
 </html>
-
